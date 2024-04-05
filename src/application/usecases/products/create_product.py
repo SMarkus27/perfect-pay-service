@@ -19,13 +19,10 @@ class CreateProduct:
                 "message": "Product already exist",
             }
 
-        await self.product_repository.create(valid_product)
-
-        result = await self.product_repository.find_one_by_name(product_name)
-        product_id = result[0]["id"]
+        result = await self.product_repository.create(valid_product)
 
         return {
             "success": True,
             "message": "product created successfully",
-            "product_id": product_id,
+            "data": result,
         }

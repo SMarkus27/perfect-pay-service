@@ -1,14 +1,14 @@
 from src.application.usecases.dtos.product import ProductDto
-from src.infra.database.mysql import MySQLConnection
+from src.infra.database.postgres import PostgresSQLConnection
 
 
 class ProductRepository:
 
     @classmethod
     async def execute_query(cls, query: str, transaction=False):
-        client = await MySQLConnection.get_client()
+        client = await PostgresSQLConnection.get_client()
         try:
-            cursor = await client.cursor(dictionary=True)
+            cursor = client.cursor()
             await cursor.execute(query)
             result = await cursor.fetchall()
             if transaction:
@@ -24,7 +24,7 @@ class ProductRepository:
     @classmethod
     async def create(cls, product: dict):
         query = (f"INSERT INTO products (name, description, price) "
-                 f"VALUES ('{product['name']}','{product['description']}',{product['price']})")
+                 f"VALUES ('{product['name']}','{product['description']}',{product['price']}) RETURNING *")
         return await cls.execute_query(query, True)
 
     @classmethod
@@ -50,13 +50,13 @@ class ProductRepository:
         query = (f"UPDATE products SET name='{product['name']}',"
                  f"description='{product['description']}',"
                  f"price={product['price']} "
-                 f"WHERE id={product_id}"
+                 f"WHERE id={product_id} RETURNING *"
                  )
         result = await cls.execute_query(query, True)
         return result
 
     @classmethod
     async def delete(cls, product_id: int):
-        query = f"DELETE FROM products WHERE id ='{product_id}'"
+        query = f"DELETE FROM products WHERE id ='{product_id}' RETURNING *"
         result = await cls.execute_query(query, True)
         return result

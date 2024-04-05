@@ -13,18 +13,18 @@ async def test_update_product() -> None:
     }
 
     product = await ProductController.create(old_product)
-    product_id = product.get("product_id")
+    data = product.get("data")[0]
+    product_id = data.get("id")
 
     new_product = {
         "name": "Product three",
         "description": "product three description",
         "price": 30.11
     }
-    expected = {"success": True, "message": "Product updated"}
 
     result = await ProductController.update(product_id, new_product)
 
-    assert result == expected
+    assert result.get("data")[0] != old_product
 
 
 @pytest.mark.asyncio

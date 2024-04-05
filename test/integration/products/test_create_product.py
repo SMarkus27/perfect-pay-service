@@ -12,7 +12,8 @@ async def test_create_product() -> None:
         "price": 20.11
     }
     result = await ProductController.create(new_product)
-    assert result.get("product_id") >= 0
+    data = result.get("data")[0]
+    assert int(data.get("id")) >= 0
 
 
 @pytest.mark.asyncio

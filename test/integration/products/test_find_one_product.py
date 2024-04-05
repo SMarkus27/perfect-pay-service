@@ -8,7 +8,6 @@ from src.controllers.product import ProductController
 async def test_find_one_product() -> None:
     product_id = 1
     result = await ProductController.find_one(product_id)
-
     assert len(result.get("data")) == 1
 
 

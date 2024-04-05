@@ -12,7 +12,8 @@ async def test_delete_product() -> None:
     }
 
     product = await ProductController.create(new_product)
-    product_id = product.get("product_id")
+    data = product.get("data")[0]
+    product_id = data.get("id")
     expected = {"success": True, "message": "Product deleted successfully"}
 
     result = await ProductController.delete(product_id)

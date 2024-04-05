@@ -16,5 +16,5 @@ class UpdateProduct:
             }
 
         valid_product = Product(**product).__dict__
-        await self.product_repository.update(product_id, valid_product)
-        return {"success": True, "message": "Product updated"}
+        result = await self.product_repository.update(product_id, valid_product)
+        return {"success": True, "message": "Product updated", "data": result }
