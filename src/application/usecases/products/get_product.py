@@ -10,10 +10,7 @@ class GetProduct:
         result = await self.product_repository.find_one_by_id(product_id)
 
         if len(result) == 0:
-            return {
-                "success": False,
-                "message": "Product not found"
-            }
+            return {"success": False, "message": "Product not found"}
         return {
             "success": True,
             "data": result,

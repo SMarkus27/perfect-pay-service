@@ -10,11 +10,8 @@ class UpdateProduct:
     async def execute(self, product_id: int, product: ProductDto):
         result = await self.product_repository.find_one_by_id(product_id)
         if len(result) == 0:
-            return {
-                "success": False,
-                "message": "Product not found"
-            }
+            return {"success": False, "message": "Product not found"}
 
         valid_product = Product(**product).__dict__
         result = await self.product_repository.update(product_id, valid_product)
-        return {"success": True, "message": "Product updated", "data": result }
+        return {"success": True, "message": "Product updated", "data": result}

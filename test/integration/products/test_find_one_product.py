@@ -15,13 +15,7 @@ async def test_find_one_product() -> None:
 async def test_find_product_product_not_found() -> None:
     product_id = 10
 
-    expected = {
-        "success": False,
-        'message': 'Product not found'
-    }
+    expected = {"success": False, "message": "Product not found"}
     result = await ProductController.find_one(product_id)
 
     assert result == expected
-
-
-

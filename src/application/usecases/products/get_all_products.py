@@ -9,10 +9,7 @@ class GetAllProducts:
         result = await self.product_repository.find()
 
         if len(result) == 0:
-            return {
-                "success": False,
-                "message": "Products not found"
-            }
+            return {"success": False, "message": "Products not found"}
 
         return {
             "success": True,

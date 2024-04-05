@@ -8,7 +8,7 @@ async def test_delete_product() -> None:
     new_product = {
         "name": "Product four",
         "description": "product description",
-        "price": 20.11
+        "price": 20.11,
     }
 
     product = await ProductController.create(new_product)
@@ -25,13 +25,7 @@ async def test_delete_product() -> None:
 async def test_delete_product_product_not_found() -> None:
     product_id = 100
 
-    expected = {
-        "success": False,
-        'message': 'Product not found'
-    }
+    expected = {"success": False, "message": "Product not found"}
     result = await ProductController.delete(product_id)
     print(result)
     assert result == expected
-
-
-

@@ -23,8 +23,10 @@ class ProductRepository:
 
     @classmethod
     async def create(cls, product: dict):
-        query = (f"INSERT INTO products (name, description, price) "
-                 f"VALUES ('{product['name']}','{product['description']}',{product['price']}) RETURNING *")
+        query = (
+            f"INSERT INTO products (name, description, price) "
+            f"VALUES ('{product['name']}','{product['description']}',{product['price']}) RETURNING *"
+        )
         return await cls.execute_query(query, True)
 
     @classmethod
@@ -47,11 +49,12 @@ class ProductRepository:
 
     @classmethod
     async def update(cls, product_id: int, product: ProductDto):
-        query = (f"UPDATE products SET name='{product['name']}',"
-                 f"description='{product['description']}',"
-                 f"price={product['price']} "
-                 f"WHERE id={product_id} RETURNING *"
-                 )
+        query = (
+            f"UPDATE products SET name='{product['name']}',"
+            f"description='{product['description']}',"
+            f"price={product['price']} "
+            f"WHERE id={product_id} RETURNING *"
+        )
         result = await cls.execute_query(query, True)
         return result
 

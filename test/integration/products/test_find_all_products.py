@@ -19,13 +19,7 @@ async def test_find_all_products() -> None:
 async def test_find_all_products_products_not_found(find_patch: Mock) -> None:
     find_patch.return_value = []
 
-    expected = {
-        "success": False,
-        'message': 'Products not found'
-    }
+    expected = {"success": False, "message": "Products not found"}
     result = await ProductController.find_all()
 
     assert result == expected
-
-
-
