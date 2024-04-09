@@ -67,8 +67,38 @@ http:localhost:8000/products/product_id
 ```
 http:localhost:8000/products/product_id
 ```
-## Sell Routes
-Building
+## Sales Routes
+### Sales Model
+```
+{
+    "product": int,
+    "sales_date": date,
+    "quantity": int,
+    "discount": float,
+    "status": boolean
+}
+```
+### Create a sales
+* Send the sales you want to create in the body of your request. Use the Sales Model for this.
+```
+http:localhost:8000/sales
+```
+### Find one sales
+```
+http:localhost:8000/sales/sales_id
+```
+### Find all sales
+```
+http:localhost:8000/sales
+```
+### Update one sales
+```
+http:localhost:8000/sales/sales_id
+```
+### Delete one sales
+```
+http:localhost:8000/sales/sales_id
+```
 ## Client Routes
 Building
 
