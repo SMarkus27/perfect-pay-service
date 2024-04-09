@@ -12,18 +12,16 @@ async def test_get_product(find_one_by_id_patch: Mock):
     product_repository = ProductRepository()
     product_id = 1
     products = [
-        {"name": "product one",
-         "description": "product description",
-         "price": 10.22,
-         "id": 1
-         },
+        {
+            "name": "product one",
+            "description": "product description",
+            "price": 10.22,
+            "id": 1,
+        },
     ]
     find_one_by_id_patch.return_value = products
 
-    expected = {
-                "success": True,
-                "data": products
-            }
+    expected = {"success": True, "data": products}
 
     result = await GetProduct(product_repository).execute(product_id)
 
@@ -38,10 +36,7 @@ async def test_get_product_product_not_found(find_one_by_id_patch: Mock):
 
     find_one_by_id_patch.return_value = []
 
-    expected = {
-                "success": False,
-                "message": "Product not found"
-            }
+    expected = {"success": False, "message": "Product not found"}
 
     result = await GetProduct(product_repository).execute(product_id)
 

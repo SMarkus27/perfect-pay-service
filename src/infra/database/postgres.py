@@ -19,3 +19,20 @@ class PostgresSQLConnection:
             return cls.postgres_conn
         except Exception as e:
             raise Exception(e)
+
+    @classmethod
+    async def execute_query(cls, query: str, transaction=False):
+        client = await cls.get_client()
+        try:
+            cursor = client.cursor()
+            await cursor.execute(query)
+            result = await cursor.fetchall()
+            if transaction:
+                await client.commit()
+
+            await cursor.close()
+            await client.close()
+
+            return result
+        except Exception as e:
+            raise Exception(e)

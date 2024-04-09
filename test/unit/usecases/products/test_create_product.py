@@ -14,7 +14,7 @@ async def test_create_product(find_one_by_name_patch: Mock, create_patch: Mock):
     product = {
         "name": "Test Product",
         "description": "Product Description",
-        "price": 55.11
+        "price": 55.11,
     }
 
     product_id = []
@@ -27,7 +27,7 @@ async def test_create_product(find_one_by_name_patch: Mock, create_patch: Mock):
     expected = {
         "success": True,
         "message": "product created successfully",
-        "data": product_with_id
+        "data": product_with_id,
     }
 
     create_patch.return_value = product_with_id
@@ -43,7 +43,7 @@ async def test_create_product_product_already_exists(find_one_by_name_patch: Moc
     product = {
         "name": "Test Product",
         "description": "Product Description",
-        "price": 55.11
+        "price": 55.11,
     }
 
     product_id = [{"id": 1}]
@@ -51,9 +51,9 @@ async def test_create_product_product_already_exists(find_one_by_name_patch: Moc
     find_one_by_name_patch.return_value = product_id
 
     expected = {
-                "success": False,
-                "message": "Product already exist",
-            }
+        "success": False,
+        "message": "Product already exist",
+    }
 
     result = await CreateProduct(product_repository).execute(product)
 
