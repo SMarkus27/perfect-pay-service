@@ -8,12 +8,14 @@ class Sales:
     quantity: int
     discount: float
     status: bool
+    client: int
 
     def __post_init__(self):
         Sales.verify_product(self.product)
         Sales.verify_quantity(self.quantity)
         Sales.verify_discount(self.discount)
         Sales.verify_status(self.status)
+        Sales.verify_client(self.client)
 
     @staticmethod
     def verify_product(product: int) -> int:
@@ -38,3 +40,9 @@ class Sales:
         if type(status) is not bool:
             raise Exception("Status must be greater a boolean")
         return status
+
+    @staticmethod
+    def verify_client(client: int) -> int:
+        if client <= 0:
+            raise Exception("Client must be greater than or equal to 1")
+        return client
