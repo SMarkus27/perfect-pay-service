@@ -9,7 +9,8 @@ class SalesRepository(ISalesRepository):
     async def create(cls, sales: dict):
         query = (
             f"INSERT INTO sales (product, sales_date, quantity, discount, status) "
-            f"VALUES ({sales['product']},'{sales['sales_date']}',{sales['quantity']},{sales['discount']}, {sales['status']}) RETURNING *"
+            f"VALUES ({sales['product']},'{sales['sales_date']}',{sales['quantity']},"
+            f"{sales['discount']}, {sales['status']}) RETURNING *"
         )
         return await PostgresSQLConnection.execute_query(query, True)
 

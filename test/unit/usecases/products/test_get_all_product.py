@@ -11,23 +11,22 @@ from src.infra.repositories.product import ProductRepository
 async def test_get_all_products(find_patch: Mock):
     product_repository = ProductRepository()
     products = [
-        {"name": "product one",
-         "description": "product description",
-         "price": 10.22,
-         "id": 1
-         },
-        {"name": "product two",
-         "description": "product description",
-         "price": 51.00,
-         "id": 2
-         },
+        {
+            "name": "product one",
+            "description": "product description",
+            "price": 10.22,
+            "id": 1,
+        },
+        {
+            "name": "product two",
+            "description": "product description",
+            "price": 51.00,
+            "id": 2,
+        },
     ]
     find_patch.return_value = products
 
-    expected = {
-                "success": True,
-                "data": products
-            }
+    expected = {"success": True, "data": products}
 
     result = await GetAllProducts(product_repository).execute()
 
@@ -41,10 +40,7 @@ async def test_get_all_products_products_not_found(find_patch: Mock):
 
     find_patch.return_value = []
 
-    expected = {
-                "success": False,
-                "message": "Products not found"
-            }
+    expected = {"success": False, "message": "Products not found"}
 
     result = await GetAllProducts(product_repository).execute()
 

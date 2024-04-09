@@ -13,17 +13,19 @@ async def test_delete_product(find_one_by_id_patch: Mock, delete_patch: Mock):
     product_repository = ProductRepository()
     product_id = 1
 
-    find_one_by_id_patch.return_value = [{
-        "name": "Product One",
-        "description": "Product Description",
-        "price": 55.12,
-        "id": product_id
-    }]
+    find_one_by_id_patch.return_value = [
+        {
+            "name": "Product One",
+            "description": "Product Description",
+            "price": 55.12,
+            "id": product_id,
+        }
+    ]
 
     expected = {
-                "success": True,
-                "message": "Product deleted successfully",
-            }
+        "success": True,
+        "message": "Product deleted successfully",
+    }
 
     result = await DeleteProduct(product_repository).execute(product_id)
 
@@ -39,9 +41,9 @@ async def test_delete_product_product_not_found(find_one_by_id_patch: Mock):
     find_one_by_id_patch.return_value = []
 
     expected = {
-                "success": False,
-                "message": "Product not found",
-            }
+        "success": False,
+        "message": "Product not found",
+    }
 
     result = await DeleteProduct(product_repository).execute(product_id)
 
