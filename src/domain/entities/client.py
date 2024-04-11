@@ -19,6 +19,7 @@ class Client:
             raise Exception("Name must be greater than or equal to 1")
         return name
 
+    #TODO creates a better validation
     @staticmethod
     def verify_cpf(cpf: str) -> str:
         if len(cpf) < 11:
@@ -32,9 +33,3 @@ class Client:
         if valid_email is None:
             raise Exception("Email invalid")
         return email
-
-    @staticmethod
-    def verify_status(status: bool) -> bool:
-        if type(status) is not bool:
-            raise Exception("Status must be greater a boolean")
-        return status
