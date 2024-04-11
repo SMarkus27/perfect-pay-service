@@ -32,7 +32,10 @@ class SalesController:
     @classmethod
     async def update(cls, sale_id: int, sale: SalesDto):
         sale_repository = SalesRepository()
-        return await UpdateSales(sale_repository).execute(sale_id, sale)
+        client_repository = ClientRepository()
+        product_repository = ProductRepository()
+
+        return await UpdateSales(sale_repository, client_repository, product_repository).execute(sale_id, sale)
 
     @classmethod
     async def delete(cls, sale_id: int):
