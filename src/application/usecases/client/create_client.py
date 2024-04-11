@@ -15,7 +15,6 @@ class CreateClient:
 
         client_id = valid_client["email"]
         client_result = await self.client_repository.find_one_by_email(client_id)
-
         if len(client_result) > 0:
             return {
                 "success": False,
