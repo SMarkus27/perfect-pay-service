@@ -30,12 +30,8 @@ jobs:
           python-version: 3.11
           cache: pip
 
-      - name: Install poetry
-        run: pip install poetry && pip install python-decouple
-
       - name: Install dependencies
-        run: poetry install
-                
-        
+        run: pip install -r requirements.txt 
+
       - name: Tests
         run: sh test.sh
