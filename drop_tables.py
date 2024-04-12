@@ -8,7 +8,7 @@ async def delete_table():
     cursor = connection.cursor()
     await cursor.execute("DROP TABLE products CASCADE ")
     await cursor.execute("DROP TABLE sales")
-    await cursor.execute("DROP TABLE client CASCADE ")
+    await cursor.execute("DROP TABLE client CASCADE")
     await connection.commit()
     await cursor.close()
     print("Drop tables completed")
