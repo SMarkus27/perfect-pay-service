@@ -1,0 +1,12 @@
+services:
+  postgresdb:
+    container_name: postgresdb
+    image: postgres:14-alpine
+    ports:
+      - 5432:5432
+    expose:
+      - 5432
+    volumes:
+      - ~/apps/postgres:/var/lib/postgresql/data
+    env_file:
+      - ../.env_example
