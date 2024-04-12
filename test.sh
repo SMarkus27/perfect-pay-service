@@ -6,4 +6,4 @@ pytest test -v
 
 python drop_tables.py
 
-#docker compose -f test/compose.yaml down
+docker compose -f test/compose.yaml down
