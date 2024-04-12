@@ -1,4 +1,10 @@
 name: Docker Actions
+env: 
+  POSTGRES_PASSWORD: test_secret
+  POSTGRES_USER: test_user
+  POSTGRES_DB: test
+  POSTGRES_HOST: localhost
+
 on:
   push:
     paths:
