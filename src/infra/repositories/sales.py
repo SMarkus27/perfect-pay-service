@@ -8,8 +8,8 @@ class SalesRepository(ISalesRepository):
     @classmethod
     async def create(cls, sales: dict):
         query = (
-            f"INSERT INTO sales (product, sales_date, quantity, discount, status) "
-            f"VALUES ({sales['product']},'{sales['sales_date']}',{sales['quantity']},"
+            f"INSERT INTO sales (product, client, sales_date, quantity, discount, status) "
+            f"VALUES ({sales['product']},{sales['client']},'{sales['sales_date']}',{sales['quantity']},"
             f"{sales['discount']}, {sales['status']}) RETURNING *"
         )
         return await PostgresSQLConnection.execute_query(query, True)

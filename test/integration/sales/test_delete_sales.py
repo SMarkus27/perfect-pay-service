@@ -7,6 +7,7 @@ from src.controllers.sales import SalesController
 async def test_delete_sales() -> None:
     new_sales = {
         "product": 1,
+        "client": 1,
         "sales_date": "2024-02-02",
         "quantity": 5,
         "discount": 0.5,
