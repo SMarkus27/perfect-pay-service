@@ -1,5 +1,5 @@
 # Perfect Pay Service
-um sistema de vendas que consiste no cadastro de produtos, cadastro de vendas e o cadastro do cliente. Gerando um relatório simplificado de vendas.
+A sales system that consists of product registration, sales registration, and client registration.
 
 # Tech Stack
 * Python 3.11
@@ -26,6 +26,11 @@ pip install poetry
 poetry install 
 ```
 
+* Run script to create the tables
+```
+python create_tables.py
+```
+
 # Run the Application
 ```
 python main.py
@@ -37,6 +42,10 @@ python main.py
 ```
 http://localhost:8000/docs
 ```
+
+### MER
+
+
 ## Product Routes
 ### Product Model
 ```
@@ -67,11 +76,44 @@ http:localhost:8000/products/product_id
 ```
 http:localhost:8000/products/product_id
 ```
+## Client Routes
+### Client Model
+
+```
+{
+    "name": str,
+    "cpf": str,
+    "email": str
+}
+```
+### Create a client
+* Send the client you want to create in the body of your request. Use the Client Model for this.
+```
+http:localhost:8000/clients
+```
+### Find one client
+```
+http:localhost:8000/clients/client_id
+```
+### Find all clients
+```
+http:localhost:8000/clients
+```
+### Update one client
+```
+http:localhost:8000/clients/client_id
+```
+### Delete one client
+```
+http:localhost:8000/clients/client_id
+```
+
 ## Sales Routes
 ### Sales Model
 ```
 {
     "product": int,
+    "client": int,
     "sales_date": date,
     "quantity": int,
     "discount": float,
@@ -99,8 +141,6 @@ http:localhost:8000/sales/sales_id
 ```
 http:localhost:8000/sales/sales_id
 ```
-## Client Routes
-Building
 
 ## Tests
 * Run the command to execute unit and integration tests.

@@ -1,8 +1,9 @@
 #!/bin/sh
 
-python product.py
-python sales.py
-pytest test
-python truncate_test.py
+python create_tables.py
 
-docker compose -f test/compose.yaml down
+pytest test -v
+
+python drop_tables.py
+
+#docker compose -f test/compose.yaml down
