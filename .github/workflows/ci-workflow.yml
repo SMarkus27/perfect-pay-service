@@ -1,5 +1,4 @@
 name: Docker Actions
-
 on:
   push:
     paths:
