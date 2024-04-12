@@ -31,7 +31,7 @@ jobs:
           cache: pip
 
       - name: Install poetry
-        run: pip install poetry
+        run: pip install poetry && pip install python-decouple
 
       - name: Install dependencies
         run: poetry install
