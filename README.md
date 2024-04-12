@@ -6,7 +6,7 @@ A sales system that consists of product registration, sales registration, and cl
 * Postgres
 
 # First Step
-* Creates a .env file and use the .env_example file as a model.
+* Creates a .env file and uses the .env_example file as a model.
 
 * If you have docker, run the code below and go to the section ***:
 ```
@@ -44,7 +44,8 @@ http://localhost:8000/docs
 ```
 
 ### MER
-
+![product_sales](https://github.com/SMarkus27/perfect-pay-service/assets/71283631/af2e5deb-b8c0-4f6f-8d41-11d93eb9ad8a)
+"
 
 ## Product Routes
 ### Product Model
@@ -56,7 +57,7 @@ http://localhost:8000/docs
 }
 ```
 ### Create a product
-* Send the product you want to create in the body of your request. Use the Product Model for this.
+* Sends the product you want to create in the body of your request. Use the Product Model for this.
 ```
 http:localhost:8000/products
 ```
