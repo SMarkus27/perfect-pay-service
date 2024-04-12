@@ -1,0 +1,11 @@
+coverage==7.4.4
+fastapi==0.110.0
+psycopg==3.1.18
+psycopg-binary==3.1.18
+pytest==8.1.1
+pytest-asyncio==0.23.6
+pytest-cov==4.1.0
+pytest-cover==3.0.0
+pytest-coverage==0.0
+python-decouple==3.8
+uvicorn==0.29.0
